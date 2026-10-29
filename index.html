@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BlogSphere | Stories That Inspire</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a href="#" class="logo">Bloom<span>Blog.</span></a>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#blogs">Explore</a>
+      <a href="#about">About</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeBtn" title="Toggle theme">☾</button>
+      <button class="btn btn-outline" id="loginBtn">Log in</button>
+      <button class="btn btn-primary" id="writeBtn">＋ Write a blog</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <span class="eyebrow">✿ YOUR SPACE, YOUR STORIES</span>
+        <h1>Every story deserves<br>to <span>blossom.</span></h1>
+        <p>A cozy corner of the internet to share your thoughts, discover fresh perspectives, and connect through words.</p>
+        <div class="hero-actions">
+          <a href="#blogs" class="btn btn-primary">Explore stories ↗</a>
+          <button class="btn btn-outline" id="heroWriteBtn">Start writing ✎</button>
+        </div>
+        <div class="hero-note">♡ Read something beautiful today.</div>
+      </div>
+      <div class="hero-art">
+        <div class="art-circle"></div>
+        <div class="floating-card">
+          <span class="flower">✿</span>
+          <p>Little thoughts.<br><strong>Big feelings.</strong></p>
+          <span class="art-caption">A place to be yourself ♡</span>
+        </div>
+        <span class="sparkle sparkle-one">✦</span>
+        <span class="sparkle sparkle-two">✧</span>
+        <span class="art-leaf">❋</span>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div><strong id="postCount">0</strong><span>Stories shared</span></div>
+      <div><strong>♡</strong><span>A community of ideas</span></div>
+      <div><strong>∞</strong><span>Stories to discover</span></div>
+    </section>
+
+    <section class="blog-section" id="blogs">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">THE READING NOOK</span>
+          <h2>Stories you'll <span>love.</span></h2>
+          <p>Fresh ideas, honest thoughts, and a little inspiration.</p>
+        </div>
+        <input id="searchInput" class="search" type="search" placeholder="⌕  Search stories...">
+      </div>
+
+      <div class="filters" id="filters">
+        <button class="filter active" data-category="All">All stories</button>
+        <button class="filter" data-category="Lifestyle">Lifestyle</button>
+        <button class="filter" data-category="Technology">Technology</button>
+        <button class="filter" data-category="Travel">Travel</button>
+        <button class="filter" data-category="Personal">Personal</button>
+      </div>
+
+      <div class="blog-grid" id="blogGrid"></div>
+      <p class="empty-state" id="emptyState" hidden>No stories found. Try another search! 🌷</p>
+    </section>
+
+    <section class="write-banner" id="about">
+      <div>
+        <span class="eyebrow">YOUR TURN TO SHINE</span>
+        <h2>Have a story in mind?</h2>
+        <p>Your words might be exactly what someone needs to read today.</p>
+      </div>
+      <button class="btn btn-light" id="bannerWriteBtn">Share your story ↗</button>
+    </section>
+  </main>
+
+  <footer>
+    <a href="#" class="logo">Bloom<span>Blog.</span></a>
+    <p>Made with ♡ for people who love stories.</p>
+    <span>© 2026 BloomBlog</span>
+  </footer>
+
+  <!-- Login / Register Modal -->
+  <dialog id="authModal">
+    <button class="modal-close" data-close="authModal">×</button>
+    <span class="eyebrow">WELCOME TO BLOOMBLOG</span>
+    <h2 id="authTitle">Welcome back ♡</h2>
+    <p class="modal-description">Join a community that loves sharing stories.</p>
+    <form id="authForm">
+      <label id="nameLabel" hidden>Your name
+        <input id="authName" placeholder="Enter your name">
+      </label>
+      <label>Email address
+        <input id="authEmail" type="email" placeholder="you@example.com" required>
+      </label>
+      <label>Password
+        <input id="authPassword" type="password" placeholder="At least 6 characters" minlength="6" required>
+      </label>
+      <button class="btn btn-primary full-width" id="authSubmit" type="submit">Log in</button>
+    </form>
+    <p class="switch-auth" id="switchAuth"></p>
+    <p class="demo-note">Demo only: accounts are stored in this browser.</p>
+  </dialog>
+
+  <!-- Create / Edit Blog Modal -->
+  <dialog id="postModal">
+    <button class="modal-close" data-close="postModal">×</button>
+    <span class="eyebrow">YOUR CREATIVE CORNER</span>
+    <h2>Write your story ✿</h2>
+    <form id="postForm">
+      <label>Story title
+        <input id="postTitle" maxlength="100" placeholder="Give your story a lovely title..." required>
+      </label>
+      <label>Category
+        <select id="postCategory">
+          <option>Lifestyle</option>
+          <option>Technology</option>
+          <option>Travel</option>
+          <option>Personal</option>
+        </select>
+      </label>
+      <label>Cover image URL (optional)
+        <input id="postImage" type="url" placeholder="https://example.com/image.jpg">
+      </label>
+      <label>Your story
+        <textarea id="postContent" rows="6" maxlength="10000" placeholder="Start writing your thoughts..." required></textarea>
+      </label>
+      <button class="btn btn-primary full-width" type="submit">Publish story ✨</button>
+    </form>
+  </dialog>
+
+  <!-- Blog Reading Modal -->
+  <dialog id="readModal">
+    <button class="modal-close" data-close="readModal">×</button>
+    <div id="readContent"></div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
